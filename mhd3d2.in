@@ -1,0 +1,19 @@
+ &dom
+ xmin=0., xmax=1., ymin=0., ymax=1., zmin=0., zmax=1.
+/
+
+ &grid
+ nx0G=128, ny0G=128, nz0=1, xprocs=8, yprocs=8
+/
+
+ &comset
+ nord=6, reconop=4, stepop=3, outop=2
+/
+
+ &list
+ nts=100, tau=1.e-4, nframes=2000, nrst=0, nfdump=10
+/
+
+ &free
+ cfl=.3, pdmb=4., eps=1.e-8, alpha=2., beta=4.
+/

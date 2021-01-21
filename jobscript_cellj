@@ -1,0 +1,38 @@
+#!/bin/bash -l
+
+#PBS -N GDB5L
+
+#PBS -q default
+
+#PBS -l nodes=1:ppn=24
+
+#PBS -l feature='cellj'
+
+#PBS -l walltime=10:00:00
+
+#PBS -A Rogers
+
+#PBS -m bea
+
+#PBS -M Ben.Zhu.GR@dartmouth.edu
+
+cd $PBS_O_WORKDIR
+
+module unload intel-compilers/13.0
+#>>>>>>>>>openmpi
+#module load intel-compilers/15.0
+#module load openmpi/1.6.5-intel15.0
+#module load hdf5/1.8.14-openmpi1.6.5-intel15.0
+
+module load intel-compilers/16.0
+module load openmpi/1.10.1-intel16.0
+module load hdf5/1.8.14-openmpi1.10.1-intel16.0
+
+make -f makefile -W mhd3d2.f90
+
+mpirun -np 16 ./mhd3d2.x
+
+#/opt/mpiexec/0.84/bin/mpiexec -pernode killall -u bzhu
+
+exit 0
+
